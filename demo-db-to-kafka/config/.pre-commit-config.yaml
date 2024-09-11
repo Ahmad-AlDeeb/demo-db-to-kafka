@@ -10,7 +10,7 @@ repos:
     hooks:
       - id: mvn-checkstyle
         name: Maven Checkstyle
-        entry: mvn checkstyle:check
+        entry: mvn -f "D:\Domains\Programming\Repo\demo-db-to-kafka-to-db\demo-db-to-kafka\pom.xml" checkstyle:check
         language: system
         types: [ java ]
         pass_filenames: false

@@ -1,5 +1,6 @@
 package com.ittovative.demodbtokafka.config;
 
+import com.ittovative.demodbtokafka.entity.Student;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,7 +32,7 @@ public class KafkaProducerConfig {
      * @return the kafka template
      */
     @Bean
-    public KafkaTemplate<String, String> studentKafkaTemplate() {
+    public KafkaTemplate<String, Student> studentKafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 
@@ -41,7 +42,7 @@ public class KafkaProducerConfig {
      * @return the producer factory
      */
     @Bean
-    public ProducerFactory<String, String> producerFactory() {
+    public ProducerFactory<String, Student> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
 
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);

@@ -13,10 +13,10 @@ import java.util.Optional;
 class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
-    private final KafkaTemplate<String, String> kafkaTemplate;
+    private final KafkaTemplate<String, Student> kafkaTemplate;
 
     @Autowired
-    StudentServiceImpl(StudentRepository studentRepository, KafkaTemplate<String, String> kafkaTemplate) {
+    StudentServiceImpl(StudentRepository studentRepository, KafkaTemplate<String, Student> kafkaTemplate) {
         this.studentRepository = studentRepository;
         this.kafkaTemplate = kafkaTemplate;
     }
@@ -43,7 +43,6 @@ class StudentServiceImpl implements StudentService {
 
     @Override
     public void sendToKafka(Student student) {
-        kafkaTemplate.send("student",
-                "Welcome " + student.getFirstName() + " " + student.getLastName() + " to Kafka.");
+        kafkaTemplate.send("student", student);
     }
 }

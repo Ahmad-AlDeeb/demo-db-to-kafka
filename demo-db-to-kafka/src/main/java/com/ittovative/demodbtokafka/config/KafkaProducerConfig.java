@@ -20,22 +20,11 @@ import static com.ittovative.demodbtokafka.constant.Producer.LINGER_MS;
 import static com.ittovative.demodbtokafka.constant.Producer.RETRIES;
 import static com.ittovative.demodbtokafka.constant.Producer.VALUE_SERIALIZER;
 
-
 /**
  * Configuration for the Kafka producer.
  */
 @Configuration
 public class KafkaProducerConfig {
-    /**
-     * KafkaTemplate for student which is used to students to Kafka topic.
-     *
-     * @return the kafka template
-     */
-    @Bean
-    public KafkaTemplate<String, Student> studentKafkaTemplate() {
-        return new KafkaTemplate<>(producerFactory());
-    }
-
     /**
      * Create and configure a Producer.
      *
@@ -55,5 +44,15 @@ public class KafkaProducerConfig {
         configProps.put(ProducerConfig.BUFFER_MEMORY_CONFIG, BUFFER_MEMORY);
 
         return new DefaultKafkaProducerFactory<>(configProps);
+    }
+
+    /**
+     * KafkaTemplate for student which is used to students to Kafka topic.
+     *
+     * @return the kafka template
+     */
+    @Bean
+    public KafkaTemplate<String, Student> studentKafkaTemplate() {
+        return new KafkaTemplate<>(producerFactory());
     }
 }

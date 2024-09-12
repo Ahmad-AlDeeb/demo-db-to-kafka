@@ -27,7 +27,7 @@ import static com.ittovative.demodbtokafka.constant.Producer.VALUE_SERIALIZER;
 @Configuration
 public class KafkaProducerConfig {
     /**
-     * KafkaTemplate for student.
+     * KafkaTemplate for student which is used to students to Kafka topic.
      *
      * @return the kafka template
      */

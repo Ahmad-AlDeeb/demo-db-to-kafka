@@ -2,24 +2,20 @@ package com.ittovative.demodbtokafka.service;
 
 import com.ittovative.demodbtokafka.entity.Student;
 
-import java.util.List;
-
-
 /**
  * The interface Student service for getting all students sending them to Kafka.
  */
 public interface StudentService {
     /**
-     * Get all students.
+     * Find student by its id .
      *
-     * @return list of students
+     * @param id the id of the student
+     * @return the student with the specified id
      */
-    List<Student> findAll();
+    Student findById(Integer id);
 
     /**
      * Send list of students in a batch to Kafka topic.
-     *
-     * @param students list of students to send in batch
      */
-    void sendBatchToKafka(List<Student> students);
+    void sendToKafka();
 }

@@ -9,7 +9,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./init:/docker-entrypoint-initdb.d
+      - ./config:/docker-entrypoint-initdb.d
     restart: always
 
   zookeeper:

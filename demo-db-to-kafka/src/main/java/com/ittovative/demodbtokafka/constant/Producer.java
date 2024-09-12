@@ -2,7 +2,7 @@ package com.ittovative.demodbtokafka.constant;
 
 public final class Producer {
     public static final String KEY_SERIALIZER = "org.apache.kafka.common.serialization.StringSerializer";
-    public static final String VALUE_SERIALIZER = "org.springframework.kafka.support.serializer.JsonSerializer";
+    public static final String VALUE_SERIALIZER = "com.ittovative.demodbtokafka.serializer.StudentSerializer";
     public static final String ACKS = "all";
     public static final Integer RETRIES = 0;
     public static final Integer BATCH_SIZE = 16384;

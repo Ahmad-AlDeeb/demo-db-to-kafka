@@ -1,7 +1,4 @@
 spring:
-  data:
-      rest:
-        base-path: /
   datasource:
     url: jdbc:mysql://localhost:3306/source
     username: root

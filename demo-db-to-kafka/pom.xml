@@ -84,7 +84,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.4.0</version>
                 <configuration>
-                    <configLocation>config/checkstyle/sun_checks_custom.xml</configLocation>
+                    <configLocation>../config/checkstyle/sun_checks_custom.xml</configLocation>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
                     <linkXRef>false</linkXRef>

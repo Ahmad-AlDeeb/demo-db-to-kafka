@@ -3,6 +3,6 @@ spring:
       rest:
         base-path: /
   datasource:
-    url: jdbc:mysql://localhost:3306/db_to_kafka
+    url: jdbc:mysql://localhost:3306/source
     username: root
     password: password

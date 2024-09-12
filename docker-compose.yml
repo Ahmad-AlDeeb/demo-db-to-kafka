@@ -1,5 +1,17 @@
 version: '3'
 services:
+  mysql:
+    image: mysql:9.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: source
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    restart: always
+
   zookeeper:
     image: confluentinc/cp-zookeeper:latest
     container_name: zookeeper

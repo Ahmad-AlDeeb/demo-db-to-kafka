@@ -11,9 +11,9 @@ import org.springframework.kafka.core.ProducerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.ittovative.demodbtokafka.constant.Kafka.BOOTSTRAP_SERVERS;
 import static com.ittovative.demodbtokafka.constant.Producer.ACKS;
 import static com.ittovative.demodbtokafka.constant.Producer.BATCH_SIZE;
-import static com.ittovative.demodbtokafka.constant.Producer.BOOTSTRAP_SERVERS;
 import static com.ittovative.demodbtokafka.constant.Producer.BUFFER_MEMORY;
 import static com.ittovative.demodbtokafka.constant.Producer.KEY_SERIALIZER;
 import static com.ittovative.demodbtokafka.constant.Producer.LINGER_MS;

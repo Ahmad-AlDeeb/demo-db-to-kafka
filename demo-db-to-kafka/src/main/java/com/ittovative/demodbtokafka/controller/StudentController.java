@@ -6,11 +6,12 @@ import com.ittovative.demodbtokafka.util.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
- * Student controller for sending students to Kafka.
+ * Student controller for sending batch of students.
  */
 @RestController
 public class StudentController {
@@ -21,19 +22,18 @@ public class StudentController {
     }
 
     /**
-     * Get student from database and send him to Kafka Topic.
+     * Gets batch of students to kafka.
      *
-     * @param id the id
-     * @return response of sending a student to Kafka
+     * @return the student batch to kafka
      */
-    @GetMapping("/students/kafka/{id}")
-    public ResponseEntity<ApiResponse<Student>> getStudentToKafka(@PathVariable("id") Integer id) {
-        Student student = studentService.findById(id);
+    @GetMapping("/students/kafka")
+    public ResponseEntity<ApiResponse<Student>> getStudentBatchToKafka() {
+        List<Student> students = studentService.findAll();
 
-        studentService.sendToKafka(student);
+        studentService.sendBatchToKafka(students);
 
         ApiResponse<Student> apiResponse =
-                new ApiResponse<>(null, HttpStatus.OK.value(), "Send Student " + id + " to Kafka");
+                new ApiResponse<>(null, HttpStatus.OK.value(), "Students batch sent to Kafka");
         return new ResponseEntity<>(apiResponse, HttpStatus.OK);
     }
 }

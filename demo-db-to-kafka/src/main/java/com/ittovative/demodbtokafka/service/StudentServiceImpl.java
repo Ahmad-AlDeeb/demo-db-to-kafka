@@ -7,7 +7,6 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 class StudentServiceImpl implements StudentService {
@@ -27,22 +26,9 @@ class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student findById(Integer id) {
-        Optional<Student> result = studentRepository.findById(id);
-
-        Student student = null;
-
-        if (result.isPresent()) {
-            student = result.get();
-        } else {
-            throw new RuntimeException("Couldn't find student with id " + id);
+    public void sendBatchToKafka(List<Student> students) {
+        for (Student student : students) {
+            kafkaTemplate.send("student", student);
         }
-
-        return student;
-    }
-
-    @Override
-    public void sendToKafka(Student student) {
-        kafkaTemplate.send("student", student);
     }
 }

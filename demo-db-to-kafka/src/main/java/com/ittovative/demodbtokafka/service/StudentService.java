@@ -6,10 +6,9 @@ import java.util.List;
 
 
 /**
- * The interface Student service for finding all students or one student by id.
+ * The interface Student service for getting all students sending them to Kafka.
  */
 public interface StudentService {
-
     /**
      * Get all students.
      *
@@ -18,17 +17,9 @@ public interface StudentService {
     List<Student> findAll();
 
     /**
-     * Find student by its id .
+     * Send list of students in a batch to Kafka topic.
      *
-     * @param id the id of the student
-     * @return the student with the specified id
+     * @param students list of students to send in batch
      */
-    Student findById(Integer id);
-
-    /**
-     * Send student to Kafka Topic.
-     *
-     * @param student the student
-     */
-    void sendToKafka(Student student);
+    void sendBatchToKafka(List<Student> students);
 }

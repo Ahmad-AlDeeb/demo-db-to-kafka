@@ -30,7 +30,7 @@
         <java.version>21</java.version>
     </properties>
     <dependencies>
-        <!-- Spring Framework Dependencies  -->
+        <!-- Spring Framework -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
@@ -58,10 +58,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-rest</artifactId>
-        </dependency>
 
         <!-- MySQL Driver  -->
         <dependency>
@@ -75,7 +71,6 @@
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

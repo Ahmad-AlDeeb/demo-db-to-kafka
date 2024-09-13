@@ -1,4 +1,4 @@
-# Changelog:
+# Changelog
 - Enable `@SuppressWarnings` to suppress the error of Considering the `OtpServiceApplication` a utility class which is not.
 - Remove `HideField` check due to Checklist considering the parameters in constructors/setters hide fields which is not happening.
 - Set max line length to 120 (To match default IntelliJ IDEA formatting)

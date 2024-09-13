@@ -17,7 +17,9 @@
 5. Open another terminal in same location.
 6. Build and run 2nd demo (consumer): `mvn -f ./demo-kafka-to-db clean install spring-boot:run`
 
+7. When you are done, terminate demos usiing `CTRL + C` command for both terminals.
+
 # 🙋‍♂️ Contribution
-1. [Code Quality And Style](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/docs/docs/Code%20Quality%20And%20Style.md).
-2. [Setup pre-commit hooks](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/docs/docs/Setup%20Pre-commit%20Hooks.md).
-3. [Check Git management policy](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/docs/docs/Git%20Management%20Policy.md).
+1. [Code Quality And Style](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/main/docs/Code%20Quality%20And%20Style.md).
+2. [Setup pre-commit hooks](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/main/docs/Setup%20Pre-commit%20Hooks.md).
+3. [Check Git management policy](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/main/docs/Git%20Management%20Policy.md).

@@ -16,7 +16,7 @@
 4. Build and run 1st demo (producer): `mvn -f ./demo-db-to-kafka clean install spring-boot:run`
 5. Open another terminal in same location.
 6. Build and run 2nd demo (consumer): `mvn -f ./demo-kafka-to-db clean install spring-boot:run`
-7. When you are done, terminate demos usiing `CTRL + C` command for both terminals.
+7. When you are done, terminate demos using `CTRL + C` command for both terminals.
 
 # 🙋‍♂️ Contribution
 1. [Code Quality And Style](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/main/docs/Code%20Quality%20And%20Style.md).

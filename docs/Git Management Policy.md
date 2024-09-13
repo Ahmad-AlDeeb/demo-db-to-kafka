@@ -20,7 +20,7 @@ Under no circumstances should you push to the main branch. Instead, follow these
 	- Assign yourself for the task and assign reviewers.
 	- Use **labels** to categorize PR and **milestones** to track progress.
 6. **After approval:**
-	1. Squash commits if needed, to remove redundant changes and make history easier to read ([Squash step-by-step](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/docs/docs/Squash%20Steps.md)).
+	1. Squash commits if needed, to remove redundant changes and make history easier to read ([Squash step-by-step](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/main/docs/Squash%20Steps.md)).
 	2. Merge the feature branch into the main branch.
 	3. Delete remote branch.
 # Commit Messages

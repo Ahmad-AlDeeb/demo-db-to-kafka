@@ -18,6 +18,7 @@
 2. Search for `SonarLint`, install it, and restart IntelliJ.
 
 # Formatting
-- Use IntelliJ Default formatting (Same as Checkstyle formatting with Sun Checks configuration).
+- Use IntelliJ Default formatting (Same as Checkstyle formatting with [custom Sun Checks configuration](https://github.com/Ahmad-AlDeeb/demo-db-to-kafka-to-db/blob/main/config/checkstyle/sun_checks_custom.xml)).
 - Hotkey: `CTRL + ALT + L`.
-
+# IntelliJ Settings Changelog
+- [Disable Wildcard Import in IntelliJ](https://www.baeldung.com/intellij-disable-wildcard-import).

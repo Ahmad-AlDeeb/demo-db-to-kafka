@@ -1,21 +1,21 @@
-# ⚫ Introduction
+# 💠 Introduction
 This project demonstrates a real-time data pipeline using Kafka for messaging between two databases. It consists of two demos:
 1. `demo-db-to-kafka`: Produces student data from a source database and publishes it to a Kafka topic named `student`.
 2. `demo-kafka-to-db`: Consumes student data from the `student` topic and inserts it into a destination database.
 
 ### Workflow Overview
-1. Every second, 5 student records are produced from the `source` database and published to the Kafka topic in a batch.
-2. The batch is then consumed and inserted into the `destination` database as soon as the data is received from the Kafka topic.
+1. Every 2 seconds, 5 students records are produced from the `source` database and published to the Kafka topic in a batch.
+2. The batch is then consumed and inserted into the `destination` database as soon as the batch is received from the Kafka topic.
 
 ### Visual Representation
 - **Left window**: Shows the Kafka consumer listening for incoming data.
 - **Right window**: Displays the `destination` database inserting the consumed data.
 
 <div align="center">
-  <video src="https://github.com/user-attachments/assets/5d52b5c3-d0bb-419f-b3fe-46f97af1ae68" width="400" autoplay loop muted></video>
+  <video src="https://github.com/user-attachments/assets/eafbf3f0-b53d-49bb-a7ab-f664efe76352" width="400" autoplay loop muted></video>
 </div>
 
-# 🔴 Prerequisites
+# ⚠ Prerequisites
 Ensure the following tools are installed to run the project smoothly:
 - **Java 21.0.3**: Required to build and run the Spring Boot applications.
 - **Apache Maven 3.9.8**: Used for dependency management and building the project.

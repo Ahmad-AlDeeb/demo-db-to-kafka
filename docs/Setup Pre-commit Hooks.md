@@ -11,3 +11,4 @@
 - **Local hooks:**
 	- maven-checkstyle (db-to-kafka)
 	- maven-checkstyle (kafka-to-db)
+	- maven-test

@@ -1,6 +1,7 @@
 package com.ittovative.demodbtokafka.service;
 
 import com.ittovative.demodbtokafka.entity.Student;
+import com.ittovative.demodbtokafka.exception.StudentNotFoundException;
 import com.ittovative.demodbtokafka.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -35,7 +36,7 @@ class StudentServiceImpl implements StudentService {
         if (result.isPresent()) {
             student = result.get();
         } else {
-            throw new RuntimeException("Couldn't find student with id " + id);
+            throw new StudentNotFoundException("Couldn't find student with id " + id);
         }
 
         return student;

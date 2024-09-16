@@ -9,7 +9,8 @@ import org.springframework.kafka.core.KafkaAdmin;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ittovative.demodbtokafka.constant.Kafka.BOOTSTRAP_SERVERS;
+import static com.ittovative.demodbtokafka.constant.KafkaConstant.BOOTSTRAP_SERVERS;
+import static com.ittovative.demodbtokafka.constant.KafkaConstant.TOPIC;
 
 /**
  * Configuration of creating Kafka topics.
@@ -38,6 +39,6 @@ public class KafkaTopicConfig {
      */
     @Bean
     public NewTopic studentTopic() {
-        return new NewTopic("student", 1, (short) 1);
+        return new NewTopic(TOPIC, 1, (short) 1);
     }
 }

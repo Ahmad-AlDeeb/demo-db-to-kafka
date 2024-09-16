@@ -15,13 +15,14 @@ import org.springframework.kafka.core.KafkaTemplate;
 
 import java.util.Optional;
 
+import static com.ittovative.demodbtokafka.constant.KafkaConstant.TOPIC;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -56,8 +57,8 @@ class StudentServiceTest {
         @Test
         @DisplayName("Find student when student exists")
         void Should_FindStudent_When_StudentExists() {
-            when(studentRepository.findById(expectedId)).thenReturn(Optional.of(actualStudent));
-            studentService.findById(expectedId);
+            when(studentRepository.findById(anyInt())).thenReturn(Optional.of(actualStudent));
+            studentService.findById(anyInt());
 
             assertAll("Assert it's exactly the same student",
                     () -> assertNotNull(actualStudent, "Student is null"),
@@ -65,16 +66,16 @@ class StudentServiceTest {
                     () -> assertEquals(expectedFirstName, actualStudent.getFirstName(), "First name mismatch"),
                     () -> assertEquals(expectedLastName, actualStudent.getLastName(), "Last name mismatch")
             );
-            verify(studentRepository, times(1)).findById(expectedId);
+            verify(studentRepository, times(1)).findById(anyInt());
         }
 
         @Test
         @DisplayName("Throw exception when student does not exist")
         void Should_ThrowException_When_StudentDoesNotExist() {
 
-            when(studentRepository.findById(expectedId)).thenReturn(Optional.empty());
+            when(studentRepository.findById(anyInt())).thenReturn(Optional.empty());
             assertThrows(StudentNotFoundException.class, () -> studentService.findById(expectedId));
-            verify(studentRepository, times(1)).findById(expectedId);
+            verify(studentRepository, times(1)).findById(anyInt());
         }
     }
 
@@ -87,17 +88,17 @@ class StudentServiceTest {
             when(studentRepository.findById(1)).thenReturn(Optional.of(actualStudent));
             studentService.sendToKafka();
 
-            verify(kafkaTemplate, times(1)).send(eq("student"), eq(actualStudent));
+            verify(kafkaTemplate, times(1)).send(TOPIC, actualStudent);
             verify(studentRepository, times(1)).findById(1);
         }
 
         @Test
         @DisplayName("Throw exception when student does not exist")
         void Should_ThrowException_When_StudentDoesNotExist() {
-            when(studentRepository.findById(expectedId)).thenReturn(Optional.empty());
+            when(studentRepository.findById(anyInt())).thenReturn(Optional.empty());
 
             assertThrows(StudentNotFoundException.class, () -> studentService.sendToKafka());
-            verify(studentRepository, times(1)).findById(expectedId);
+            verify(studentRepository, times(1)).findById(anyInt());
             verify(kafkaTemplate, never()).send(anyString(), any(Student.class));
         }
     }

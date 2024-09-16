@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-import static com.ittovative.demodbtokafka.constant.Scheduler.FIXED_DELAY;
+import static com.ittovative.demodbtokafka.constant.KafkaConstant.TOPIC;
+import static com.ittovative.demodbtokafka.constant.SchedulerConstant.FIXED_DELAY;
 
 @Service
 @EnableScheduling
@@ -45,6 +46,6 @@ class StudentServiceImpl implements StudentService {
     @Override
     @Scheduled(fixedDelay = FIXED_DELAY)
     public void sendToKafka() {
-        kafkaTemplate.send("student", findById(studentId++));
+        kafkaTemplate.send(TOPIC, findById(studentId++));
     }
 }

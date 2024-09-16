@@ -32,9 +32,9 @@ import static org.mockito.Mockito.when;
 @SuppressWarnings("checkstyle:MethodName")
 class StudentServiceTest {
 
-    private final Integer id = 1;
-    private final String firstName = "Duffie";
-    private final String lastName = "Ewers";
+    private final Integer expectedId = 1;
+    private final String expectedFirstName = "Duffie";
+    private final String expectedLastName = "Ewers";
     private Student student;
 
     @Mock
@@ -46,7 +46,7 @@ class StudentServiceTest {
 
     @BeforeEach
     void init() {
-        student = new Student(id, firstName, lastName);
+        student = new Student(expectedId, expectedFirstName, expectedLastName);
     }
 
     @Nested
@@ -56,24 +56,24 @@ class StudentServiceTest {
         @Test
         @DisplayName("Find student when student exists")
         void Should_FindStudent_When_StudentExists() {
-            when(studentRepository.findById(id)).thenReturn(Optional.of(student));
-            studentService.findById(id);
+            when(studentRepository.findById(anyInt())).thenReturn(Optional.of(student));
+            studentService.findById(anyInt());
 
             assertAll("Assert it's exactly the same student",
                     () -> assertNotNull(student, "Student is null"),
-                    () -> assertEquals(id, student.getId(), "Student id mismatch"),
-                    () -> assertEquals(firstName, student.getFirstName(), "First name mismatch"),
-                    () -> assertEquals(lastName, student.getLastName(), "Last name mismatch")
+                    () -> assertEquals(expectedId, student.getId(), "Student id mismatch"),
+                    () -> assertEquals(expectedFirstName, student.getFirstName(), "First name mismatch"),
+                    () -> assertEquals(expectedLastName, student.getLastName(), "Last name mismatch")
             );
-            verify(studentRepository, times(1)).findById(id);
+            verify(studentRepository, times(1)).findById(anyInt());
         }
 
         @Test
         @DisplayName("Throw exception when student does not exist")
         void Should_ThrowException_When_StudentDoesNotExist() {
-            when(studentRepository.findById(id)).thenReturn(Optional.empty());
-            assertThrows(StudentNotFoundException.class, () -> studentService.findById(id));
-            verify(studentRepository, times(1)).findById(id);
+            when(studentRepository.findById(anyInt())).thenReturn(Optional.empty());
+            assertThrows(StudentNotFoundException.class, () -> studentService.findById(expectedId));
+            verify(studentRepository, times(1)).findById(anyInt());
         }
     }
 

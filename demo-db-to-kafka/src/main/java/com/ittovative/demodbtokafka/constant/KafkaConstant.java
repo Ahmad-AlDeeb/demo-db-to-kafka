@@ -1,8 +1,9 @@
 package com.ittovative.demodbtokafka.constant;
 
-public final class Kafka {
+public final class KafkaConstant {
     public static final String BOOTSTRAP_SERVERS = "localhost:19092";
+    public static final String TOPIC = "studen";
 
-    private Kafka() {
+    private KafkaConstant() {
     }
 }

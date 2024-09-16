@@ -1,6 +1,6 @@
 package com.ittovative.demodbtokafka.constant;
 
-public final class Producer {
+public final class ProducerConstant {
     public static final String KEY_SERIALIZER = "org.apache.kafka.common.serialization.StringSerializer";
     public static final String VALUE_SERIALIZER = "com.ittovative.demodbtokafka.serializer.StudentSerializer";
     public static final String ACKS = "all";
@@ -9,6 +9,6 @@ public final class Producer {
     public static final Integer LINGER_MS = 1000;
     public static final Integer BUFFER_MEMORY = 33554432;
 
-    private Producer() {
+    private ProducerConstant() {
     }
 }

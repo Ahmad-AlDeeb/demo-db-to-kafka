@@ -3,3 +3,11 @@ spring:
     url: jdbc:mysql://localhost:3306/source
     username: root
     password: password
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # Expose all endpoints
+  endpoint:
+    health:
+      show-details: "always"  # Expose full health details

@@ -2,6 +2,8 @@ package com.ittovative.demokafkatodb.service;
 
 import com.ittovative.demokafkatodb.entity.Student;
 
+import java.util.List;
+
 /**
  * The interface Student service for saving students from Kafka topic into database.
  */
@@ -18,7 +20,7 @@ public interface StudentService {
     /**
      * Save students from Kafka into database.
      *
-     * @param student the student we will receive from Kafka topic and save to database.
+     * @param students the students
      */
-    void saveFromKafka(Student student);
+    void saveFromKafka(List<Student> students);
 }

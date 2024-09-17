@@ -6,7 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven
+name: Java CI with Maven and Docker Compose
 
 on:
   push:
@@ -28,7 +28,34 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
+    
+    # Install Docker Compose
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install docker-compose -y
 
+    # Run docker compose
+    - name: Set up Docker Compose
+      run: docker-compose up -d
+
+    # Wait for MySQL to be ready
+    - name: Wait for MySQL to be ready
+      run: |
+        until docker-compose exec mysql mysqladmin ping -h "127.0.0.1" --silent; do
+          echo "Waiting for MySQL to be ready..."
+          sleep 5
+        done
+
+    # Wait for Kafka to be ready
+    - name: Wait for Kafka to be ready
+      run: |
+        until docker-compose exec kafka-broker nc -z localhost 19092; do
+          echo "Waiting for Kafka to be ready..."
+          sleep 5
+        done
+
+    # Run and test both demos
     - name: Build demo-db-to-kafka with Maven
       run: mvn -B package -f demo-db-to-kafka/pom.xml
 

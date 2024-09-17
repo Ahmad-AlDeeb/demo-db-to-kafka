@@ -6,8 +6,7 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: Java CI with Maven and Docker Compose
-
+name: CI 
 on:
   push:
     branches: [ "main" ]
@@ -16,9 +15,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     
@@ -55,16 +52,54 @@ jobs:
           sleep 5
         done
 
-    # Run and test both demos
+    # Build 
     - name: Build demo-db-to-kafka with Maven
       run: mvn -B package -f demo-db-to-kafka/pom.xml
-
-    - name: Run tests for demo-db-to-kafka
-      run: mvn -f demo-db-to-kafka/pom.xml test
 
     - name: Build demo-kafka-to-db with Maven
       run: mvn -B package -f demo-kafka-to-db/pom.xml
 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+        cache: maven
+    
+    # Install Docker Compose
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install docker-compose -y
+
+    # Run docker compose
+    - name: Set up Docker Compose
+      run: docker-compose up -d
+
+    # Wait for MySQL to be ready
+    - name: Wait for MySQL to be ready
+      run: |
+        until docker-compose logs mysql | grep "ready for connections"; do
+          echo "Waiting for MySQL to be ready..."
+          sleep 5
+        done
+
+    # Wait for Kafka to be ready
+    - name: Wait for Kafka to be ready
+      run: |
+        until docker-compose logs kafka-broker | grep "started (kafka.server.KafkaServer)"; do
+          echo "Waiting for Kafka to be ready..."
+          sleep 5
+        done
+    
+    # Test
+    - name: Run tests for demo-db-to-kafka
+      run: mvn -f demo-db-to-kafka/pom.xml test
+      
     - name: Run tests for demo-kafka-to-db
       run: mvn -f demo-kafka-to-db/pom.xml test
-    

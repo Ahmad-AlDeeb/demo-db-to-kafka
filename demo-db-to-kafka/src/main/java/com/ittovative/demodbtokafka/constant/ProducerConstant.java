@@ -6,7 +6,7 @@ public final class ProducerConstant {
     public static final String ACKS = "all";
     public static final Integer RETRIES = 0;
     public static final Integer BATCH_SIZE = 16384;
-    public static final Integer LINGER_MS = 1000;
+    public static final Integer LINGER_MS = 2000;
     public static final Integer BUFFER_MEMORY = 33554432;
 
     private ProducerConstant() {

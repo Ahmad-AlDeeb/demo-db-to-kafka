@@ -14,7 +14,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -59,7 +59,7 @@ jobs:
     - name: Build demo-kafka-to-db with Maven
       run: mvn -B package -f demo-kafka-to-db/pom.xml
 
-  test:
+  Test:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -103,3 +103,11 @@ jobs:
       
     - name: Run tests for demo-kafka-to-db
       run: mvn -f demo-kafka-to-db/pom.xml test
+
+  Code-Quality:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: nikitasavinov/checkstyle-action@0.6.0
+      with:
+        checkstyle_config: config/checkstyle/sun_checks_custom.xml

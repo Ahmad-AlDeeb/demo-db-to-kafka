@@ -28,12 +28,18 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
 
-    - name: Run tests
-      run: mvn test
+    - name: Build demo-db-to-kafka with Maven
+      run: mvn -B package -f demo-db-to-kafka/pom.xml
+
+    - name: Run tests for demo-db-to-kafka
+      run: mvn -f demo-db-to-kafka/pom.xml test
+
+    - name: Build demo-kafka-to-db with Maven
+      run: mvn -B package -f demo-kafka-to-db/pom.xml
+
+    - name: Run tests for demo-kafka-to-db
+      run: mvn -f demo-kafka-to-db/pom.xml test
     
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph

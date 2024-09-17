@@ -5,3 +5,11 @@ spring:
     password: password
 server:
   port: 8081
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # Expose all endpoints
+  endpoint:
+    health:
+      show-details: "always"  # Expose full health details

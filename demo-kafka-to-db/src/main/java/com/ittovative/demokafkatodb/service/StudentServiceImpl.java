@@ -7,6 +7,9 @@ import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 
+import static com.ittovative.demokafkatodb.constant.ConsumerConstant.GROUP_ID;
+import static com.ittovative.demokafkatodb.constant.KafkaConstant.TOPIC;
+
 
 @EnableKafka
 @Service
@@ -24,7 +27,7 @@ class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    @KafkaListener(topics = "student", groupId = "1")
+    @KafkaListener(topics = TOPIC, groupId = GROUP_ID)
     public void saveFromKafka(Student student) {
         studentRepository.save(student);
     }

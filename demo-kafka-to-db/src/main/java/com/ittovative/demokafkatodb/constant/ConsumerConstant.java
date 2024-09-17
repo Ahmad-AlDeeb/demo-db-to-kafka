@@ -1,8 +1,8 @@
 package com.ittovative.demokafkatodb.constant;
 
-public final class Consumer {
+public final class ConsumerConstant {
     public static final String GROUP_ID = "1";
 
-    private Consumer() {
+    private ConsumerConstant() {
     }
 }

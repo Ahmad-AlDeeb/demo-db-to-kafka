@@ -14,8 +14,8 @@ import org.springframework.kafka.core.DefaultKafkaConsumerFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.ittovative.demokafkatodb.constant.Consumer.GROUP_ID;
-import static com.ittovative.demokafkatodb.constant.Kafka.BOOTSTRAP_SERVERS;
+import static com.ittovative.demokafkatodb.constant.ConsumerConstant.GROUP_ID;
+import static com.ittovative.demokafkatodb.constant.KafkaConstant.BOOTSTRAP_SERVERS;
 
 /**
  * Create and configure consumer to get students from Kafka.

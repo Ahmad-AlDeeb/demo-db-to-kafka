@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.ittovative.demokafkatodb.constant.ConsumerConstant.GROUP_ID;
+import static com.ittovative.demokafkatodb.constant.ConsumerConstant.MAX_POLL_RECORDS;
 import static com.ittovative.demokafkatodb.constant.KafkaConstant.BOOTSTRAP_SERVERS;
 
 /**
@@ -36,6 +37,7 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StudentDeserializer.class);
+        props.put(ConsumerConfig.MAX_POLL_RECORDS_CONFIG, MAX_POLL_RECORDS);
 
         return new DefaultKafkaConsumerFactory<>(props);
     }

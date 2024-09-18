@@ -24,11 +24,6 @@ class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student save(Student student) {
-        return studentRepository.save(student);
-    }
-
-    @Override
     @KafkaListener(topics = TOPIC, groupId = GROUP_ID)
     public void saveFromKafka(List<Student> students) {
         studentRepository.saveAll(students);

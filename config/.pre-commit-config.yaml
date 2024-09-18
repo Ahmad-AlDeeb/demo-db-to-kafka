@@ -21,8 +21,13 @@ repos:
         types: [ java ]
         pass_filenames: false
       - id: maven-test
-        name: Maven Test
+        name: Maven Test (db-to-kafka)
         entry: mvn -f "D:\Domains\Programming\Repo\demo-db-to-kafka-to-db\demo-db-to-kafka\pom.xml" test
+        language: system
+        pass_filenames: false
+      - id: maven-test
+        name: Maven Test (kafka-to-db)
+        entry: mvn -f "D:\Domains\Programming\Repo\demo-db-to-kafka-to-db\demo-kafka-to-db\pom.xml" test
         language: system
         pass_filenames: false
 #      - id: dependency-check # Scans the project for vulnerable dependencies.

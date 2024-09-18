@@ -9,24 +9,24 @@ repos:
   - repo: local
     hooks:
       - id: mvn-checkstyle
-        name: Maven Checkstyle (db-to-kafka)
+        name: Running Checkstyle (db-to-kafka)
         entry: mvn -f "D:\Domains\Programming\Repo\demo-db-to-kafka-to-db\demo-db-to-kafka\pom.xml" checkstyle:check
         language: system
         types: [ java ]
         pass_filenames: false
       - id: mvn-checkstyle
-        name: Maven Checkstyle (kafka-to-db)
+        name: Running Checkstyle (kafka-to-db)
         entry: mvn -f "D:\Domains\Programming\Repo\demo-db-to-kafka-to-db\demo-kafka-to-db\pom.xml" checkstyle:check
         language: system
         types: [ java ]
         pass_filenames: false
       - id: maven-test
-        name: Maven Test (db-to-kafka)
+        name: Testing (db-to-kafka)
         entry: mvn -f "D:\Domains\Programming\Repo\demo-db-to-kafka-to-db\demo-db-to-kafka\pom.xml" test
         language: system
         pass_filenames: false
       - id: maven-test
-        name: Maven Test (kafka-to-db)
+        name: Testing (kafka-to-db)
         entry: mvn -f "D:\Domains\Programming\Repo\demo-db-to-kafka-to-db\demo-kafka-to-db\pom.xml" test
         language: system
         pass_filenames: false

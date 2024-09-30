@@ -5,6 +5,8 @@ import com.ittovative.demokafkatodb.entity.Student;
 import com.ittovative.demokafkatodb.exception.StudentDeserializationException;
 import org.apache.kafka.common.serialization.Deserializer;
 
+import static com.ittovative.demokafkatodb.constant.ExceptionConstant.DESERIALIZING_STUDENT_ERROR_MESSAGE;
+
 public class StudentDeserializer implements Deserializer<Student> {
 
     private final ObjectMapper objectMapper;
@@ -22,7 +24,7 @@ public class StudentDeserializer implements Deserializer<Student> {
         try {
             return objectMapper.readValue(data, Student.class);
         } catch (Exception e) {
-            throw new StudentDeserializationException("Error deserializing Student!", e);
+            throw new StudentDeserializationException(DESERIALIZING_STUDENT_ERROR_MESSAGE, e);
         }
     }
 }

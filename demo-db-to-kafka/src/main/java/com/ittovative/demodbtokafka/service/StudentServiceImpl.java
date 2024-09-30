@@ -11,12 +11,16 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+import static com.ittovative.demodbtokafka.constant.ExceptionConstant.RESOURCE_NOT_FOUND_MESSAGE;
 import static com.ittovative.demodbtokafka.constant.KafkaConstant.TOPIC;
 import static com.ittovative.demodbtokafka.constant.SchedulerConstant.FIXED_DELAY;
+import static java.lang.String.format;
 
 @Service
 @EnableScheduling
 class StudentServiceImpl implements StudentService {
+    private static final String RESOURCE_NAME = Student.class.getSimpleName();
+    private static final String FIELD_ID = "id";
 
     private final StudentRepository studentRepository;
     private final KafkaTemplate<String, Student> kafkaTemplate;
@@ -37,7 +41,7 @@ class StudentServiceImpl implements StudentService {
         if (result.isPresent()) {
             student = result.get();
         } else {
-            throw new StudentNotFoundException("Couldn't find student with id " + id);
+            throw new StudentNotFoundException(format(RESOURCE_NOT_FOUND_MESSAGE, RESOURCE_NAME, FIELD_ID, id));
         }
 
         return student;

@@ -5,6 +5,8 @@ import com.ittovative.demodbtokafka.entity.Student;
 import com.ittovative.demodbtokafka.exception.StudentSerializationException;
 import org.apache.kafka.common.serialization.Serializer;
 
+import static com.ittovative.demodbtokafka.constant.ExceptionConstant.SERIALIZATION_ERROR_MESSAGE;
+
 public class StudentSerializer implements Serializer<Student> {
     private final ObjectMapper objectMapper;
 
@@ -21,7 +23,7 @@ public class StudentSerializer implements Serializer<Student> {
         try {
             return objectMapper.writeValueAsBytes(student);
         } catch (Exception e) {
-            throw new StudentSerializationException("Error serializing Student!", e);
+            throw new StudentSerializationException(SERIALIZATION_ERROR_MESSAGE, e);
         }
     }
 }

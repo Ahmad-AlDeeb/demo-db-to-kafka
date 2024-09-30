@@ -2,7 +2,6 @@ package com.ittovative.demokafkatodb.service;
 
 import com.ittovative.demokafkatodb.entity.Student;
 import com.ittovative.demokafkatodb.repository.StudentRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
@@ -18,7 +17,6 @@ import static com.ittovative.demokafkatodb.constant.KafkaConstant.TOPIC;
 class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
 
-    @Autowired
     StudentServiceImpl(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
     }

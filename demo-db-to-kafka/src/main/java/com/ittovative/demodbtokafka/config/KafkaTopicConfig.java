@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.ittovative.demodbtokafka.constant.KafkaConstant.BOOTSTRAP_SERVERS;
+import static com.ittovative.demodbtokafka.constant.KafkaConstant.NUMBER_OF_PARTITIONS;
+import static com.ittovative.demodbtokafka.constant.KafkaConstant.REPLICATION_FACTOR;
 import static com.ittovative.demodbtokafka.constant.KafkaConstant.TOPIC;
 
 /**
@@ -39,6 +41,6 @@ public class KafkaTopicConfig {
      */
     @Bean
     public NewTopic studentTopic() {
-        return new NewTopic(TOPIC, 1, (short) 1);
+        return new NewTopic(TOPIC, NUMBER_OF_PARTITIONS, (short) REPLICATION_FACTOR);
     }
 }

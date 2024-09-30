@@ -1,5 +1,7 @@
 package com.ittovative.demodbtokafka.constant;
 
+import static com.ittovative.demodbtokafka.constant.ExceptionConstant.UTILITY_CLASS_INSTANTIATION_MESSAGE;
+
 public final class ProducerConstant {
     public static final String KEY_SERIALIZER = "org.apache.kafka.common.serialization.StringSerializer";
     public static final String VALUE_SERIALIZER = "com.ittovative.demodbtokafka.serializer.StudentSerializer";
@@ -10,5 +12,6 @@ public final class ProducerConstant {
     public static final Integer BUFFER_MEMORY = 33554432;
 
     private ProducerConstant() {
+        throw new IllegalStateException(UTILITY_CLASS_INSTANTIATION_MESSAGE);
     }
 }
